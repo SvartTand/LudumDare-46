@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu()]
 public class ColourSettings : ScriptableObject
 {
-    public Color colour;
+    public Color planetColour;
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TerrainFace
 {
+
     ShapeGenerator shapeGenerator;
     Mesh mesh;
     int resolution;
