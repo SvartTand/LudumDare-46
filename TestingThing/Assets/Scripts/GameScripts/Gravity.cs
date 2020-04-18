@@ -45,7 +45,7 @@ public class Gravity : MonoBehaviour
     {
         if(collision.collider.tag == "meteor")
         {
-            Destroy(collision.collider.gameObject);
+            collision.collider.GetComponent<Meteor>().DestroyIt();
             Debug.Log("Meteor Hit Us");
         }
     }

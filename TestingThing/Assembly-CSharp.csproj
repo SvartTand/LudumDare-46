@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\GameScripts\Gun.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Meteor.cs" />
     <Compile Include="Assets\Scripts\GameScripts\MeteorController.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Turret.cs" />
     <Compile Include="Assets\Scripts\GameScripts\UIScripts\UIController.cs" />
     <Compile Include="Assets\Scripts\INoiseFilter.cs" />
     <Compile Include="Assets\Scripts\MinMax.cs" />

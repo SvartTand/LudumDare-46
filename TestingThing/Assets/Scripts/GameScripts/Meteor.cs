@@ -6,10 +6,11 @@ public class Meteor : MonoBehaviour {
 
     public float speed;
     private Rigidbody rb;
+    private MeteorController controller;
 
-    public void Init(Transform target)
+    public void Init(Transform target, MeteorController cont)
     {
-
+        controller = cont;
         rb = GetComponent<Rigidbody>();
 
         Vector3 heading = - transform.position + target.position;
@@ -17,9 +18,13 @@ public class Meteor : MonoBehaviour {
         rb.AddForce(heading * speed);
     }
 
-
+    public void DestroyIt()
+    {
+        controller.Remove(this);
+        Destroy(gameObject);
+    }
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        DestroyIt();
     }
 }

@@ -33,9 +33,9 @@ public class Gun : MonoBehaviour
         gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
     }
 
-    public void SetAngle(float a)
+    public void SetAngle(float x, float y)
     {
-        transform.rotation = Quaternion.Euler(a-90, 0, 0);
+        transform.rotation = Quaternion.Euler(x-90, y, 0);
 
     }
 

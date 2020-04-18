@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Meteor
+  - Turret
+  - Planet
   layers:
   - Default
   - TransparentFX
