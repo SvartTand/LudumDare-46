@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu()]
 public class ShapeSettings : ScriptableObject{
 
-    public float planetRadius;
+    public float planetRadius = 1;
+    public NoiseSettings noiseSettings;
 }
