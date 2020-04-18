@@ -12,10 +12,12 @@ public class Meteor : MonoBehaviour {
     {
         controller = cont;
         rb = GetComponent<Rigidbody>();
-
+        transform.LookAt(target);
         Vector3 heading = - transform.position + target.position;
         heading = heading / heading.magnitude;
         rb.AddForce(heading * speed);
+
+
     }
 
     public void DestroyIt()

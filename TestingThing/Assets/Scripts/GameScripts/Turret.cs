@@ -15,11 +15,14 @@ public class Turret : MonoBehaviour {
     private float time;
     public float rateOfFire;
 
+    public Transform emitter;
+
 
     public void Init(MeteorController controller, Gravity gravity)
     {
         meteorController = controller;
         this.gravity = gravity;
+        transform.LookAt(gravity.transform.position);
     }
 
     private void Update()
@@ -40,19 +43,24 @@ public class Turret : MonoBehaviour {
             target = meteorController.getClosest(transform.position).transform;
             updateTime = 0;
         }
-
+        time += Time.deltaTime;
         if(time >= rateOfFire)
         {
             //Shoot
-            GameObject tempBullet = Instantiate(bullet, transform.position, transform.rotation, null);
+            GameObject tempBullet = Instantiate(bullet, emitter.position, emitter.rotation, null);
 
 
-            Vector3 heading = transform.position - target.position;
+            Vector3 heading = -transform.position + target.position;
             heading = heading / heading.magnitude;
             tempBullet.GetComponent<Rigidbody>().AddForce(heading * force);
             tempBullet.GetComponent<Bullet>().Init(gravity);
-            gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
+            //gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
             time = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
         }
     }
 }

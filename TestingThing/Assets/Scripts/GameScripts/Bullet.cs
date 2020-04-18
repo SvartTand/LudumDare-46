@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
         time += Time.deltaTime;
         if (time >= lifeTime)
         {
-            gravity.RemoveObject(GetComponent<Rigidbody>());
+            //gravity.RemoveObject(GetComponent<Rigidbody>());
             Destroy(gameObject);
 
         }
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        gravity.RemoveObject(GetComponent<Rigidbody>());
+        //gravity.RemoveObject(GetComponent<Rigidbody>());
         Destroy(gameObject);
     }
 }

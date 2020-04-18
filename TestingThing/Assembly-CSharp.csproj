@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\ShapeGenerator.cs" />
     <Compile Include="Assets\Scripts\ShapeSettings.cs" />
     <Compile Include="Assets\Scripts\SimpleNoiseFilter.cs" />
+    <Compile Include="Assets\Scripts\SpinningBehaviour.cs" />
     <Compile Include="Assets\Scripts\TerrainFace.cs" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>D:/OwnGames/LudumDare-46/TestingThing/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>

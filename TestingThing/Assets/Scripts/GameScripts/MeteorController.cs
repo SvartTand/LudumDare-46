@@ -21,6 +21,8 @@ public class MeteorController : MonoBehaviour {
         timer += Time.deltaTime;
         if(timer >= spawnrate)
         {
+            
+
             GameObject tempMeteor = Instantiate(meteor, Random.onUnitSphere * distance, transform.rotation, this.transform);
             tempMeteor.GetComponent<Meteor>().Init(planet, this);
             meteors.Add(tempMeteor.GetComponent<Meteor>());
