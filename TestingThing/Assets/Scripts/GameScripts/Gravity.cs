@@ -33,5 +33,20 @@ public class Gravity : MonoBehaviour
     public void AddObject(Rigidbody obj)
     {
         rigidbodies.Add(obj);
+
+    }
+
+    public void RemoveObject(Rigidbody rb)
+    {
+        rigidbodies.Remove(rb);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "meteor")
+        {
+            Destroy(collision.collider.gameObject);
+            Debug.Log("Meteor Hit Us");
+        }
     }
 }
