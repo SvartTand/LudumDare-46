@@ -17,6 +17,7 @@ public class Turret : MonoBehaviour {
 
     public Transform emitter;
 
+    public AudioSource audioS;
 
     public void Init(MeteorController controller, Gravity gravity, Transform par)
     {
@@ -54,13 +55,14 @@ public class Turret : MonoBehaviour {
         {
             //Shoot
             GameObject tempBullet = Instantiate(bullet, emitter.position, emitter.rotation, meteorController.transform);
-
+            audioS.Play();
+            Debug.Log(audioS.isPlaying);
 
             Vector3 heading = -transform.position + target.position;
             heading = heading / heading.magnitude;
             tempBullet.GetComponent<Rigidbody>().AddForce(heading * force);
             tempBullet.transform.LookAt(target);
-            tempBullet.GetComponent<Bullet>().Init(gravity);
+            tempBullet.GetComponent<Bullet>().Init(gravity, false);
             //gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
             time = 0;
         }

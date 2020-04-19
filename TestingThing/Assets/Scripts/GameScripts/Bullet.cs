@@ -6,11 +6,18 @@ public class Bullet : MonoBehaviour {
 
     public float lifeTime = 1;
     private float time = 0;
+    private Transform target;
 
     private Gravity gravity;
 
-    public void Init(Gravity g)
+    public AudioSource source;
+
+    public void Init(Gravity g, bool fromCamera)
     {
+        if (fromCamera)
+        {
+            source.Play();
+        }
         gravity = g;
     }
 	
@@ -23,6 +30,7 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
 
         }
+
         
 	}
 

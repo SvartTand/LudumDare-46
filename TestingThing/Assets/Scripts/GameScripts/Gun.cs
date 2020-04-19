@@ -29,7 +29,7 @@ public class Gun : MonoBehaviour
         Vector3 heading = emitter.transform.position - transform.position;
         heading = heading / heading.magnitude;
         tempBullet.GetComponent<Rigidbody>().AddForce(heading * force);
-        tempBullet.GetComponent<Bullet>().Init(gravity);
+        tempBullet.GetComponent<Bullet>().Init(gravity, false);
         gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
     }
 

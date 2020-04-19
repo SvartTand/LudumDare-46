@@ -24,6 +24,10 @@ public class UIController : MonoBehaviour {
 
     public Text moneyText;
 
+    public AudioSource audioSource;
+
+    
+
     private void Start()
     {
         moneyText.text = "Money: " + money;
@@ -31,7 +35,8 @@ public class UIController : MonoBehaviour {
 
     public void ManualSelected()
     {
-        if(manualFire == true)
+        audioSource.Play();
+        if (manualFire == true)
         {
             currentTurret = null;
             turretInfoText.text = "Nothing selected";
@@ -49,6 +54,7 @@ public class UIController : MonoBehaviour {
 
     public void Turret1Selected()
     {
+        audioSource.Play();
         manualFire = false;
         if (currentTurret == turret_1)
         {
@@ -65,6 +71,7 @@ public class UIController : MonoBehaviour {
 
     public void Turret2Selected()
     {
+        audioSource.Play();
         manualFire = false;
         if (currentTurret == turret_2)
         {
@@ -99,12 +106,14 @@ public class UIController : MonoBehaviour {
 
     public bool BuyTurret(Vector3 pos, Transform parent, MeteorController meteorController, Gravity gravity)
     {
+
         if(currentTurret != null)
         {
             if(currentTurret == turret_1)
             {
                 if(money >= cost1)
                 {
+                    audioSource.Play();
                     money -= cost1;
                     moneyText.text = "Money: " + money;
                     GameObject temp = Instantiate(currentTurret, pos, transform.rotation, parent);
@@ -116,6 +125,8 @@ public class UIController : MonoBehaviour {
             {
                 if(money >= cost2)
                 {
+
+                    audioSource.Play();
                     money -= cost2;
                     moneyText.text = "Money: " + money;
                     GameObject temp = Instantiate(currentTurret, pos, transform.rotation, parent);

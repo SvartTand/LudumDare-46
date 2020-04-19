@@ -54,7 +54,7 @@ public class GameHandler : MonoBehaviour {
 
                     dir = dir / dir.magnitude;
                     tempBullet.GetComponent<Rigidbody>().AddForce( dir * bulletForce);
-                    tempBullet.GetComponent<Bullet>().Init(gravity);
+                    tempBullet.GetComponent<Bullet>().Init(gravity, true);
                 }
                 
                 Transform objectHit = hit.transform;

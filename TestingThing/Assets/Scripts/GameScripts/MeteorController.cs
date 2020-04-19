@@ -8,7 +8,6 @@ public class MeteorController : MonoBehaviour {
     public float spawnrate;
     private float timer;
     public Transform planet;
-    public GameObject meteor;
     public float distance = 100;
 
     private List<Meteor> meteors;
@@ -19,10 +18,22 @@ public class MeteorController : MonoBehaviour {
     public UIController ui;
 
     public int waveAmount;
+    public int waveTime;
+    private int wave = 1;
+
+    public GameObject meteorSmall;
+    public GameObject meteor;
+    public GameObject meteorBig;
+    public GameObject meteorLarge;
+
+    public float meteorSmallAmount = 0.5f;
+    public float meteorAmount = 0.3f;
+    public float meteorBigAmount = 0.15f;
+    public float meteorLargeAmount = 0.05f;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         meteors = new List<Meteor>();
         UpdateScore();
 	}
@@ -30,16 +41,38 @@ public class MeteorController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        if(timer >= spawnrate)
+        if(timer >= waveTime)
         {
-            
 
-            GameObject tempMeteor = Instantiate(meteor, Random.onUnitSphere * distance, transform.rotation, this.transform);
-            tempMeteor.GetComponent<Meteor>().Init(planet, this);
-            meteors.Add(tempMeteor.GetComponent<Meteor>());
+            for (int i = 0; i < wave*waveAmount; i++)
+            {
+                float r = Random.value;
+                if(r >= meteorSmallAmount)
+                {
+                    SpawnMeteor(meteorSmall);
+                }else if(r >= meteorAmount)
+                {
+                    SpawnMeteor(meteor);
+                }else if(r >= meteorBigAmount)
+                {
+                    SpawnMeteor(meteorBig);
+                }
+                else
+                {
+                    SpawnMeteor(meteorLarge);
+                }
+            }
+            wave++;
             timer = 0;
         }
 	}
+
+    private void SpawnMeteor(GameObject type)
+    {
+        GameObject tempMeteor = Instantiate(type, Random.onUnitSphere * distance, transform.rotation, this.transform);
+        tempMeteor.GetComponent<Meteor>().Init(planet, this);
+        meteors.Add(tempMeteor.GetComponent<Meteor>());
+    }
     public void Add(Meteor m)
     {
         meteors.Add(m);
