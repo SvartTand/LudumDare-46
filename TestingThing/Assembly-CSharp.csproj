@@ -69,8 +69,11 @@
     <Compile Include="Assets\Scripts\GameScripts\GameHandler.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Gun.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\HealthComponent.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Meteor.cs" />
     <Compile Include="Assets\Scripts\GameScripts\MeteorController.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Missile.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\MissileLauncher.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Turret.cs" />
     <Compile Include="Assets\Scripts\GameScripts\UIScripts\UIController.cs" />
     <Compile Include="Assets\Scripts\INoiseFilter.cs" />

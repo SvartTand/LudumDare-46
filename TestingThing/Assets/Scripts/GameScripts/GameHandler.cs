@@ -25,12 +25,12 @@ public class GameHandler : MonoBehaviour {
             {
                 
                 Transform objectHit = hit.transform;
-                if(objectHit.tag == "Planet")
+                if(objectHit.tag == "Planet" && GetComponent<UIController>().BuyTurret())
                 {
                     Debug.Log("Selected" + hit.point);
 
                     
-                    GameObject temp = Instantiate(turret, hit.point, transform.rotation, planet.transform);
+                    GameObject temp = Instantiate(GetComponent<UIController>().currentTurret, hit.point, transform.rotation, planet.transform);
                     temp.GetComponent<Turret>().Init(meteorController, gravity);
                 }
             }

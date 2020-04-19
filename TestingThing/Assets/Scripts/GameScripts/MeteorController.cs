@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeteorController : MonoBehaviour {
 
@@ -11,9 +12,14 @@ public class MeteorController : MonoBehaviour {
     public float distance = 100;
 
     private List<Meteor> meteors;
+
+    private int score = 0;
+    public Text scoreText;
+
 	// Use this for initialization
 	void Start () {
         meteors = new List<Meteor>();
+        UpdateScore();
 	}
 	
 	// Update is called once per frame
@@ -29,9 +35,25 @@ public class MeteorController : MonoBehaviour {
             timer = 0;
         }
 	}
-    public void Remove(Meteor meteor)
+    public void Remove(Meteor meteor, bool s)
     {
         meteors.Remove(meteor);
+        if (s)
+        {
+            score++;
+            UpdateScore();
+        }
+        
+
+    }
+
+    public Meteor GetRandom()
+    {
+        if (meteors.Count >= 1)
+        {
+            return meteors[Random.Range(0, meteors.Count - 1)];
+        }
+        return null;
     }
     
     public Meteor getClosest(Vector3 position)
@@ -57,5 +79,10 @@ public class MeteorController : MonoBehaviour {
             return null;
         }
         
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + score;
     }
 }
