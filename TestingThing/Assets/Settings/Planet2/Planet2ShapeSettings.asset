@@ -50,7 +50,7 @@ MonoBehaviour:
         strength: 0.21
         numLayers: 5
         baseRoughness: 1.65
-        roughness: 4.65
+        roughness: 4
         persistence: 1.43
         centre: {x: 0, y: 0, z: 0}
         minValue: 0.96

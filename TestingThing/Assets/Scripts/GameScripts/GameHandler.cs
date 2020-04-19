@@ -19,7 +19,11 @@ public class GameHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         planet.GeneratePlanet();
-        moon.GeneratePlanet();
+        if(moon != null)
+        {
+            moon.GeneratePlanet();
+        }
+        
 	}
 
     // Update is called once per frame
