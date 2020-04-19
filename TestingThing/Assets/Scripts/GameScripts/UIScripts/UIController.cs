@@ -145,4 +145,9 @@ public class UIController : MonoBehaviour {
         moneyText.text = "Money: " + money;
     }
 
+    public void Exit()
+    {
+        GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreHandler>().LoadGameOver(0);
+    }
+
 }

@@ -16,6 +16,7 @@ public class MissileLauncher : MonoBehaviour {
     public float rateOfFire;
 
     public Transform emitter;
+    public AudioSource audioS;
 
 
     public void Init(MeteorController controller, Gravity gravity, Transform par)
@@ -53,7 +54,7 @@ public class MissileLauncher : MonoBehaviour {
         {
             //Shoot
             GameObject tempMissile = Instantiate(missile, emitter.position, emitter.rotation, meteorController.transform);
-
+            audioS.Play();
 
             Vector3 heading = -transform.position + target.position;
             heading = heading / heading.magnitude;

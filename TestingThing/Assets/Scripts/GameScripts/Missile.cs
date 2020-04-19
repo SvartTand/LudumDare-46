@@ -19,6 +19,8 @@ public class Missile : MonoBehaviour {
     public CharacterController controller;
     private MeteorController meteorController;
 
+    public TrailRenderer trail;
+
     public void Init(Transform t, MeteorController meteors)
     {
         target = t;
@@ -35,6 +37,8 @@ public class Missile : MonoBehaviour {
             
             if(m == null)
             {
+                trail.transform.parent = meteorController.transform;
+                Destroy(trail, 3);
                 Destroy(gameObject);
             }
             else
@@ -62,6 +66,8 @@ public class Missile : MonoBehaviour {
             if (Vector3.Distance(transform.position, target.transform.position) <= 4f)
             {
                 target.GetComponent<Meteor>().DestroyIt(true);
+                trail.transform.parent = meteorController.transform;
+                Destroy(trail, 3);
                 Destroy(gameObject);
             }
         }
@@ -71,6 +77,8 @@ public class Missile : MonoBehaviour {
         time += Time.deltaTime;
         if (time >= lifeTime)
         {
+            trail.transform.parent = meteorController.transform;
+            Destroy(trail, 3);
             //gravity.RemoveObject(GetComponent<Rigidbody>());
             Destroy(gameObject);
 
@@ -80,6 +88,8 @@ public class Missile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        trail.transform.parent = meteorController.transform;
+        Destroy(trail, 3);
         //gravity.RemoveObject(GetComponent<Rigidbody>());
         Destroy(gameObject);
     }

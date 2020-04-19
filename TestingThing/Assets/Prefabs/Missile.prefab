@@ -243,6 +243,7 @@ MonoBehaviour:
   speed: 20
   acceleration: 20
   controller: {fileID: 143306771501946070}
+  trail: {fileID: 96037473990517816}
 --- !u!143 &143306771501946070
 CharacterController:
   m_ObjectHideFlags: 1

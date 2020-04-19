@@ -25,6 +25,8 @@ public class MainMenuController : MonoBehaviour {
 
     private string level = "GameScene";
 
+    public AudioSource audioSource;
+
     
 	// Use this for initialization
 	void Start () {
@@ -58,6 +60,7 @@ public class MainMenuController : MonoBehaviour {
 
     public void LeftPressed()
     {
+        audioSource.Play();
         playText.text = "Play, Easy";
         target = Level1Pos;
         moving = true;
@@ -66,9 +69,12 @@ public class MainMenuController : MonoBehaviour {
 
     public void RightPressed()
     {
+        audioSource.Play();
         playText.text = "Play, Insane";
         target = Level2Pos;
         moving = true;
         level = "Insane";
     }
+
+
 }

@@ -129,7 +129,7 @@ public class MeteorController : MonoBehaviour {
 
     public void UpdateScore()
     {
-        
+        scoreHandler.score = score;
         scoreText.text = "Score: " + score;
     }
 
