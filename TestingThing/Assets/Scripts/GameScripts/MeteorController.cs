@@ -31,7 +31,8 @@ public class MeteorController : MonoBehaviour {
     public float meteorBigAmount = 0.15f;
     public float meteorLargeAmount = 0.05f;
 
-
+    public ScoreHandler scoreHandler;
+    
     // Use this for initialization
     void Start () {
         meteors = new List<Meteor>();
@@ -130,5 +131,10 @@ public class MeteorController : MonoBehaviour {
     {
         
         scoreText.text = "Score: " + score;
+    }
+
+    public void GameLost()
+    {
+        scoreHandler.LoadGameOver(score);
     }
 }

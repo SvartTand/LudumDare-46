@@ -9,6 +9,7 @@ TagManager:
   - Planet
   - Projectile
   - Moon
+  - Score
   layers:
   - Default
   - TransparentFX

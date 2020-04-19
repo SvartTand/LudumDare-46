@@ -71,7 +71,11 @@ public class Meteor : MonoBehaviour {
     {
         if (other.tag == "Planet")
         {
-            other.GetComponent<HealthComponent>().TakeDmg(dmg);
+            if (other.GetComponent<HealthComponent>().TakeDmg(dmg))
+            {
+                controller.GameLost();
+            }
+            
             if (splitAmount > 0)
             {
                 other.GetComponent<Gravity>().CreateCrater(transform.position);

@@ -74,10 +74,12 @@
     <Compile Include="Assets\Scripts\GameScripts\MeteorController.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Missile.cs" />
     <Compile Include="Assets\Scripts\GameScripts\MissileLauncher.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\ScoreHandler.cs" />
     <Compile Include="Assets\Scripts\GameScripts\SpinningBehaviour.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Turret.cs" />
     <Compile Include="Assets\Scripts\GameScripts\UIScripts\UIController.cs" />
     <Compile Include="Assets\Scripts\INoiseFilter.cs" />
+    <Compile Include="Assets\Scripts\MenuScripts\GameOverController.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\MenuScripts\RotateAround.cs" />
     <Compile Include="Assets\Scripts\MinMax.cs" />
