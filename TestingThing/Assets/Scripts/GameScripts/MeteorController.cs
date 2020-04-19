@@ -16,6 +16,11 @@ public class MeteorController : MonoBehaviour {
     private int score = 0;
     public Text scoreText;
 
+    public UIController ui;
+
+    public int waveAmount;
+
+
 	// Use this for initialization
 	void Start () {
         meteors = new List<Meteor>();
@@ -35,12 +40,19 @@ public class MeteorController : MonoBehaviour {
             timer = 0;
         }
 	}
+    public void Add(Meteor m)
+    {
+        meteors.Add(m);
+    }
+
     public void Remove(Meteor meteor, bool s)
     {
         meteors.Remove(meteor);
         if (s)
         {
             score++;
+            ui.money++;
+            ui.UpdateMoney();
             UpdateScore();
         }
         
@@ -83,6 +95,7 @@ public class MeteorController : MonoBehaviour {
 
     public void UpdateScore()
     {
+        
         scoreText.text = "Score: " + score;
     }
 }

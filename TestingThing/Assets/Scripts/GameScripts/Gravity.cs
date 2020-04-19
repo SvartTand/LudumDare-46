@@ -12,6 +12,8 @@ public class Gravity : MonoBehaviour
 
     public List<Rigidbody> rigidbodies = new List<Rigidbody>();
 
+    public GameObject crater;
+
 
     // Update is called once per frame
     void Update()
@@ -30,6 +32,13 @@ public class Gravity : MonoBehaviour
         
     }
 
+    public void CreateCrater(Vector3 pos)
+    {
+        GameObject temp = Instantiate(crater, pos, transform.rotation, transform);
+            temp.transform.LookAt(transform);
+            temp.transform.Rotate(new Vector3(180, 0, 0));
+    }
+
     public void AddObject(Rigidbody obj)
     {
         rigidbodies.Add(obj);
@@ -40,6 +49,7 @@ public class Gravity : MonoBehaviour
     {
         rigidbodies.Remove(rb);
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {

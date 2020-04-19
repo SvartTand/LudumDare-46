@@ -7,6 +7,8 @@ TagManager:
   - Meteor
   - Turret
   - Planet
+  - Projectile
+  - Moon
   layers:
   - Default
   - TransparentFX

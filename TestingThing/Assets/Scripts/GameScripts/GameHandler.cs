@@ -8,14 +8,31 @@ public class GameHandler : MonoBehaviour {
     public Planet planet;
     public MeteorController meteorController;
     public GameObject turret;
+    public Planet moon;
+
+    public float cooldown = 1;
+    private float time = 0;
+    private bool canShoot = true;
+
+    public GameObject bullet;
+    public float bulletForce = 300;
 	// Use this for initialization
 	void Start () {
         planet.GeneratePlanet();
+        moon.GeneratePlanet();
 	}
 
     // Update is called once per frame
     void Update()
     {
+
+        time += Time.deltaTime;
+
+        if(time >= cooldown)
+        {
+            canShoot = true;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -24,14 +41,28 @@ public class GameHandler : MonoBehaviour {
             if (Physics.Raycast(ray, out hit))
             {
                 
-                Transform objectHit = hit.transform;
-                if(objectHit.tag == "Planet" && GetComponent<UIController>().BuyTurret())
+
+                if (GetComponent<UIController>().manualFire && canShoot)
                 {
+                    Vector3 pos = Camera.main.transform.position;
+                    Vector3 dir = hit.point - pos;
+
+                    canShoot = false;
+                    time = 0;
+                    GameObject tempBullet = Instantiate(bullet, pos, Quaternion.LookRotation(dir), meteorController.transform);
+
+
+                    dir = dir / dir.magnitude;
+                    tempBullet.GetComponent<Rigidbody>().AddForce( dir * bulletForce);
+                    tempBullet.GetComponent<Bullet>().Init(gravity);
+                }
+                
+                Transform objectHit = hit.transform;
+                if(objectHit.tag == "Planet" || objectHit.tag == "Moon")
+                {
+                    GetComponent<UIController>().BuyTurret(hit.point, objectHit.transform, meteorController, gravity);
                     Debug.Log("Selected" + hit.point);
 
-                    
-                    GameObject temp = Instantiate(GetComponent<UIController>().currentTurret, hit.point, transform.rotation, planet.transform);
-                    temp.GetComponent<Turret>().Init(meteorController, gravity);
                 }
             }
         }

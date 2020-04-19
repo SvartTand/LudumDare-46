@@ -9,6 +9,9 @@ public class UIController : MonoBehaviour {
     public Button turret2;
     public Text turretInfoText;
 
+    public Button ManualButton;
+    public bool manualFire;
+
     public GameObject turret_1;
     public GameObject turret_2;
 
@@ -26,9 +29,28 @@ public class UIController : MonoBehaviour {
         moneyText.text = "Money: " + money;
     }
 
+    public void ManualSelected()
+    {
+        if(manualFire == true)
+        {
+            currentTurret = null;
+            turretInfoText.text = "Nothing selected";
+            manualFire = false;
+        }
+        else
+        {
+            currentTurret = null;
+            turretInfoText.text = "Manual Fire On";
+            manualFire = true;
+        }
+        
+
+    }
+
     public void Turret1Selected()
     {
-        if(currentTurret == turret_1)
+        manualFire = false;
+        if (currentTurret == turret_1)
         {
             currentTurret = null;
             turretInfoText.text = "Nothing selected";
@@ -43,6 +65,7 @@ public class UIController : MonoBehaviour {
 
     public void Turret2Selected()
     {
+        manualFire = false;
         if (currentTurret == turret_2)
         {
             currentTurret = null;
@@ -72,7 +95,9 @@ public class UIController : MonoBehaviour {
         }
     }
 
-    public bool BuyTurret()
+    
+
+    public bool BuyTurret(Vector3 pos, Transform parent, MeteorController meteorController, Gravity gravity)
     {
         if(currentTurret != null)
         {
@@ -82,6 +107,9 @@ public class UIController : MonoBehaviour {
                 {
                     money -= cost1;
                     moneyText.text = "Money: " + money;
+                    GameObject temp = Instantiate(currentTurret, pos, transform.rotation, parent);
+
+                    temp.GetComponent<Turret>().Init(meteorController, gravity, parent);
                     return true;
                 }
             }else if (currentTurret == turret_2)
@@ -90,12 +118,20 @@ public class UIController : MonoBehaviour {
                 {
                     money -= cost2;
                     moneyText.text = "Money: " + money;
+                    GameObject temp = Instantiate(currentTurret, pos, transform.rotation, parent);
+
+                    temp.GetComponent<MissileLauncher>().Init(meteorController, gravity, parent);
                     return true;
                 }
             }
         }
 
         return false;
+    }
+
+    public void UpdateMoney()
+    {
+        moneyText.text = "Money: " + money;
     }
 
 }

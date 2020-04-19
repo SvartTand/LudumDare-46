@@ -18,11 +18,12 @@ public class Turret : MonoBehaviour {
     public Transform emitter;
 
 
-    public void Init(MeteorController controller, Gravity gravity)
+    public void Init(MeteorController controller, Gravity gravity, Transform par)
     {
         meteorController = controller;
         this.gravity = gravity;
-        transform.LookAt(gravity.transform.position);
+        transform.LookAt(par.position);
+        transform.Rotate(new Vector3(180, 0, 0));
     }
 
     private void Update()
@@ -40,19 +41,25 @@ public class Turret : MonoBehaviour {
         updateTime += Time.deltaTime;
         if (updateTime >= updateTarget)
         {
-            target = meteorController.getClosest(transform.position).transform;
+            Meteor m = meteorController.getClosest(transform.position);
+            if (m != null)
+            {
+                target = m.transform;
+            }
             updateTime = 0;
+
         }
         time += Time.deltaTime;
-        if(time >= rateOfFire)
+        if(time >= rateOfFire && target != null)
         {
             //Shoot
-            GameObject tempBullet = Instantiate(bullet, emitter.position, emitter.rotation, null);
+            GameObject tempBullet = Instantiate(bullet, emitter.position, emitter.rotation, meteorController.transform);
 
 
             Vector3 heading = -transform.position + target.position;
             heading = heading / heading.magnitude;
             tempBullet.GetComponent<Rigidbody>().AddForce(heading * force);
+            tempBullet.transform.LookAt(target);
             tempBullet.GetComponent<Bullet>().Init(gravity);
             //gravity.AddObject(tempBullet.GetComponent<Rigidbody>());
             time = 0;

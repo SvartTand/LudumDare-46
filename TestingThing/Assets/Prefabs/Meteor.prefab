@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 135204524252402496}
   - component: {fileID: 114829814276081314}
   - component: {fileID: 54198424757964004}
+  - component: {fileID: 114704904350936026}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Meteor
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911926804932876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9419918, y: 6.66, z: -1.36}
+  m_LocalPosition: {x: 6.753354, y: 4.182815, z: -19.334652}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4674137104951374}
@@ -272,6 +273,21 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114704904350936026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911926804932876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af5067bdce243b4da86356c2e9c707f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 2
+  hpBar: 0
+  bar: {fileID: 0}
+  hpText: {fileID: 0}
 --- !u!114 &114829814276081314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +300,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
+  dmg: 1
+  particles: {fileID: 198554303162740532}
+  trail: {fileID: 96846950795965918}
+  hp: {fileID: 114704904350936026}
+  canSplit: 1
+  splitAmount: 3
+  splittedMeteor: {fileID: 1664553344722126, guid: ecf6edb98b0fcd94a92bf657cefb9a20,
+    type: 2}
+  explosion: {fileID: 198888309990979780, guid: 1e7c15e0e8a9fff4c8d71cd1904b2cbb,
+    type: 2}
 --- !u!135 &135204524252402496
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -291,10 +317,10 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911926804932876}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.06
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198554303162740532
 ParticleSystem:

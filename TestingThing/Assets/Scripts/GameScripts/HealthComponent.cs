@@ -12,6 +12,7 @@ public class HealthComponent : MonoBehaviour {
     public Slider bar;
     public Text hpText;
 
+
 	// Use this for initialization
 	void Start () {
         currentHp = maxHp;
@@ -21,12 +22,15 @@ public class HealthComponent : MonoBehaviour {
         }
 	}
 	
-	public void TakeDmg(float dmg)
+	public bool TakeDmg(float dmg)
     {
         currentHp = currentHp - dmg;
 
         if (currentHp <= 0)
         {
+
+            
+            return true;
             Destroy(gameObject);
         }
 
@@ -36,6 +40,7 @@ public class HealthComponent : MonoBehaviour {
             bar.value = currentHp / maxHp;
             
         }
+        return false;
         
     }
 }
