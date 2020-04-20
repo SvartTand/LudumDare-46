@@ -64,7 +64,7 @@ public class UIController : MonoBehaviour {
         else
         {
             currentTurret = turret_1;
-            turretInfoText.text = "Turret 1 selected";
+            turretInfoText.text = "AA defence selected";
         }
         
     }
@@ -81,7 +81,7 @@ public class UIController : MonoBehaviour {
         else
         {
             currentTurret = turret_2;
-            turretInfoText.text = "Turret 2 selected";
+            turretInfoText.text = "Missile Launcher selected";
         }
 
     }

@@ -37,29 +37,31 @@ public class GameHandler : MonoBehaviour {
             canShoot = true;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && GetComponent<UIController>().manualFire && canShoot)
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                Vector3 pos = Camera.main.transform.position;
+                Vector3 dir = hit.point - pos;
+
+                canShoot = false;
+                time = 0;
+                GameObject tempBullet = Instantiate(bullet, pos, Quaternion.LookRotation(dir), meteorController.transform);
+
+
+                dir = dir / dir.magnitude;
+                tempBullet.GetComponent<Rigidbody>().AddForce(dir * bulletForce);
+                tempBullet.GetComponent<Bullet>().Init(gravity, true);
+            }
+        }else if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
             {
-                
-
-                if (GetComponent<UIController>().manualFire && canShoot)
-                {
-                    Vector3 pos = Camera.main.transform.position;
-                    Vector3 dir = hit.point - pos;
-
-                    canShoot = false;
-                    time = 0;
-                    GameObject tempBullet = Instantiate(bullet, pos, Quaternion.LookRotation(dir), meteorController.transform);
-
-
-                    dir = dir / dir.magnitude;
-                    tempBullet.GetComponent<Rigidbody>().AddForce( dir * bulletForce);
-                    tempBullet.GetComponent<Bullet>().Init(gravity, true);
-                }
                 
                 Transform objectHit = hit.transform;
                 if(objectHit.tag == "Planet" || objectHit.tag == "Moon")
