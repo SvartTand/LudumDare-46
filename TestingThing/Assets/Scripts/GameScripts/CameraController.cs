@@ -12,6 +12,14 @@ public class CameraController : MonoBehaviour
     public float maxFov;
     public float sensitivity;
 
+    private bool shake;
+
+    private float shakeDuration = 0;
+    private float shakeAmount = 0.7f;
+    private float decreaseFactor = 1;
+
+    private Vector3 originalPos;
+
 
     // Update is called once per frame
     void Update()
@@ -28,6 +36,35 @@ public class CameraController : MonoBehaviour
         fov = Mathf.Clamp(fov, minFov, maxFov);
         Camera.main.fieldOfView = fov;
 
+        if (shake)
+        {
+            ShakeUpdate();
+        }
 
+        
+
+    }
+
+    private void ShakeUpdate()
+    {
+        originalPos = transform.localPosition;
+        if (shakeDuration > 0)
+        {
+            transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {
+            shake = false;
+        }
+
+    }
+
+    public void Shake(float amount, float duration, float decrese)
+    {
+        shake = true;
+        shakeAmount = amount;
+        shakeDuration = duration;
+        decreaseFactor = decrese;
     }
 }

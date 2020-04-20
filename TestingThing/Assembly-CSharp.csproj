@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\GameScripts\MeteorController.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Missile.cs" />
     <Compile Include="Assets\Scripts\GameScripts\MissileLauncher.cs" />
+    <Compile Include="Assets\Scripts\GameScripts\Sattelite.cs" />
     <Compile Include="Assets\Scripts\GameScripts\ScoreHandler.cs" />
     <Compile Include="Assets\Scripts\GameScripts\SpinningBehaviour.cs" />
     <Compile Include="Assets\Scripts\GameScripts\Turret.cs" />

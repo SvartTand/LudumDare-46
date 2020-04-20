@@ -305,7 +305,7 @@ MonoBehaviour:
   trail: {fileID: 96371383190252724}
   hp: {fileID: 114278706338857274}
   canSplit: 1
-  splitAmount: 3
+  splitAmount: 1
   splittedMeteor: {fileID: 1911926804932876, guid: abfff25d98a076e409ec2c5b5df33abc,
     type: 2}
   explosion: {fileID: 198888309990979780, guid: 1e7c15e0e8a9fff4c8d71cd1904b2cbb,

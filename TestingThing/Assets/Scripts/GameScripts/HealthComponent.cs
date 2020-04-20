@@ -36,6 +36,7 @@ public class HealthComponent : MonoBehaviour {
 
         if (hpBar)
         {
+            Camera.main.GetComponent<CameraController>().Shake(0.1f, 0.5f, 2);
             hpText.text = currentHp + "/" + maxHp;
             bar.value = currentHp / maxHp;
             
